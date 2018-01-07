@@ -1,0 +1,35 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'ldap_ssh_keymanagement'
+require 'docopt'
+
+doc = <<~DOCOPT
+  ldap ssh keymanagement.
+
+  Usage:
+    ldap_ssh_keymangement list_all <user>
+    ldap_ssh_keymangement list <user> <host>
+DOCOPT
+
+begin
+  args = Docopt.docopt(doc)
+  # require 'pp'
+  # pp args
+
+  if args['list_all']
+    user = args['<user>']
+    puts "# SSH keys for #{user}"
+    puts LdapSshKeymanagement.get_ssh_keys(user)
+  end
+  if args['list']
+    user = args['<user>']
+    host = args['<host>']
+
+    puts "# SSH keys for #{user} #{host}"
+    puts LdapSshKeymanagement.get_ssh_keys_for_host(user, host)
+  end
+rescue Docopt::Exit => e
+  puts e.message
+  exit
+end
