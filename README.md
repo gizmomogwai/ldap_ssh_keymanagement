@@ -10,6 +10,12 @@ And then execute:
 
     $ ldap_ssh_keymanagement --help
 
+## Building
+
+    $ gem install bundler
+    $ bundle install
+    $ bundle exec rake
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/gizmomogwai/ldap_ssh_keymanagement. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
